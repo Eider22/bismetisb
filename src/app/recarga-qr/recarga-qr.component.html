@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Recargar</h1>
+  <form [formGroup]="formGroupRecarga" (ngSubmit)="onSubmit()">
+    <label for="phone">Número de Celular*</label>
+    <input
+      formControlName="phoneControl"
+      type="tel"
+      id="phone"
+      placeholder="Ej. 3001234567"
+      required
+    />
+
+
+    <label for="amount">Valor a Recargar*</label>
+    <input
+      formControlName="amountControl"
+      type="number"
+      id="amount"
+      placeholder="Ej. 5000"
+      required
+    />
+
+    <button type="submit" [disabled]="formGroupRecarga.invalid">Recargar</button>
+  </form>
+
+  <!-- Mostrar errores -->
+  <div *ngIf="formGroupRecarga.get('phoneControl')?.errors?.['required']">
+    ⚠ El número de celular es obligatorio.
+  </div>
+  <div *ngIf="formGroupRecarga.get('amountControl')?.errors?.['required']">
+    ⚠ El monto a recargar es obligatorio.
+  </div>
+</div>
