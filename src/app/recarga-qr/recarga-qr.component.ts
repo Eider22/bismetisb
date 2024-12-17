@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './recarga-qr.component.css'
 })
 export class RecargaQrComponent {
+  isImageExpanded = false;
   formGroupRecarga: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
@@ -25,5 +26,9 @@ export class RecargaQrComponent {
     } else {
       console.log('Recarga fallida');
     }
+  }
+
+  expandImage() {
+    this.isImageExpanded = !this.isImageExpanded;
   }
 }

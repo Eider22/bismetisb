@@ -32,10 +32,15 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
-      <img src="https://thumbs.dreamstime.com/b/sonrisa-de-retrato-y-hombre-negocios-con-los-brazos-cruzados-en-el-trabajo-oficina-o-empresa-confianza-cara-feliz-enfrente-278069919.jpg" alt="Foto del Representante" class="footer-img">
+      <img
+        src="https://thumbs.dreamstime.com/b/sonrisa-de-retrato-y-hombre-negocios-con-los-brazos-cruzados-en-el-trabajo-oficina-o-empresa-confianza-cara-feliz-enfrente-278069919.jpg"
+        alt="Foto del Representante"
+        class="footer-img"
+        [class.expanded]="isImageExpanded"
+        (click)="expandImage()"
+      />
       <div class="footer-details">
         <p class="footer-name">Nombre</p>
         <p class="footer-role">Representante de Empresa</p>
@@ -43,4 +48,6 @@
       </div>
     </div>
   </footer>
+
+
 </div>
