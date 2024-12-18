@@ -10,13 +10,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RecargaQrComponent {
   isImageExpanded = false;
+  amount: number = 300;
   formGroupRecarga: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
     this.formGroupRecarga = this.formBuilder.group({
       phoneControl: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]], // Validación de 10 dígitos
-      amountControl: [{ value: 500, disabled: true }, [Validators.required, Validators.min(500)]] // Valor predeterminado deshabilitado
     });
+  }
+
+  getPhoneControlValue(): string {
+    return this.formGroupRecarga.get('phoneControl')?.value || ''; // Retorna el valor o una cadena vacía
   }
 
 

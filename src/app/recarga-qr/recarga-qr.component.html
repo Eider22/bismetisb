@@ -1,6 +1,6 @@
 <div class="super-container">
   <div class="container">
-    <h1>Recargar</h1>
+    <h1><i class="fa-brands fa-bitcoin"></i>{{amount}} satoshis </h1>
     <form [formGroup]="formGroupRecarga" (ngSubmit)="onSubmit()">
       <label for="phone">Número de Celular*</label>
       <input
@@ -11,16 +11,7 @@
         required
       />
 
-      <label for="amount">Valor del qr*</label>
-      <input
-        formControlName="amountControl"
-        type="number"
-        id="amount"
-        placeholder="Ej. 5000"
-        required
-      />
-
-      <button type="submit" [disabled]="formGroupRecarga.invalid">Recargar</button>
+      <button type="submit" [disabled]="formGroupRecarga.invalid">Recargar a la alcancia</button>
     </form>
 
     <!-- Mostrar errores -->
