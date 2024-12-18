@@ -200,7 +200,7 @@ svg {
   }
 
   svg {
-    max-width: 50%; /* Ajusta el tamaño del SVG */
+    max-width: 30%; /* Ajusta el tamaño del SVG */
     height: auto;
   }
 
