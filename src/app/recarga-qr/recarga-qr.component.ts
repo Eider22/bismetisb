@@ -15,7 +15,7 @@ export class RecargaQrComponent {
   constructor(private formBuilder: FormBuilder) {
     this.formGroupRecarga = this.formBuilder.group({
       phoneControl: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]], // Validación de 10 dígitos
-      amountControl: ['', [Validators.required, Validators.min(500)]] // Valor mínimo de recarga
+      amountControl: [{ value: 500, disabled: true }, [Validators.required, Validators.min(500)]] // Valor predeterminado deshabilitado
     });
   }
 
