@@ -134,6 +134,38 @@ button:disabled {
   margin: 2px 0;
 }
 
+.svg-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30vh; /* Asegura que quede a la mitad de la pantalla */
+  max-width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg {
+  max-width: 30%; /* Ajusta el tamaño del SVG */
+  height: auto;
+  margin-bottom: 0;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+.svg-container {
+  animation: bounce 2s infinite;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {
@@ -157,4 +189,19 @@ button:disabled {
   .footer-details {
     font-size: 0.8rem;
   }
+
+  .svg-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh; /* Asegura que quede a la mitad de la pantalla */
+    max-width: 90%;
+    margin: auto;
+  }
+
+  svg {
+    max-width: 50%; /* Ajusta el tamaño del SVG */
+    height: auto;
+  }
+
 }
