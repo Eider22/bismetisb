@@ -14,7 +14,8 @@ export class RequestsService {
     return this.http.get('http://localhost:8080/fund/all');
   }
 
-  getSatoshis(): Observable<ResponseDto<number>> {
-    return this.http.get<ResponseDto<number>>('http://localhost:8080/recharge/change-satoshis');
+
+  getSatoshis(code: string): Observable<ResponseDto<number>> {
+    return this.http.get<ResponseDto<number>>('http://localhost:8080/recharge/get-code-sts?code='+code);
   }
 }

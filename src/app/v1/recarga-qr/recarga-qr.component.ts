@@ -21,13 +21,19 @@ export class RecargaQrComponent implements OnInit{
     });
   }
   ngOnInit(): void {
-    this.requestsService.getSatoshis().subscribe((response: ResponseDto<number>) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const code: string | null = urlParams.get('code');
+    if (code) {
+      this.requestsService.getSatoshis(code).subscribe((response: ResponseDto<number>) => {
       if (response.statusCode !== 200) {
         console.error('Error al obtener los satoshis');
         return;
       }
       this.amount = response.data;
-    });
+      });
+    } else {
+      console.error('No se encontró el código en la URL');
+    }
   }
 
   getPhoneControlValue(): string {
