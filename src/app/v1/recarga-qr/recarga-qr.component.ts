@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RequestsService } from '../services/requests.service';
+import { ResponseDto } from '../models/entities/response.dto';
 
 @Component({
   selector: 'app-recarga-qr',
@@ -8,14 +10,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './recarga-qr.component.html',
   styleUrl: './recarga-qr.component.css'
 })
-export class RecargaQrComponent {
+export class RecargaQrComponent implements OnInit{
   isImageExpanded = false;
-  amount: number = 300;
+  amount: number = 0;
   formGroupRecarga: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private requestsService: RequestsService) {
     this.formGroupRecarga = this.formBuilder.group({
       phoneControl: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]], // Validación de 10 dígitos
+    });
+  }
+  ngOnInit(): void {
+    this.requestsService.getSatoshis().subscribe((response: ResponseDto<number>) => {
+      if (response.statusCode !== 200) {
+        console.error('Error al obtener los satoshis');
+        return;
+      }
+      this.amount = response.data;
     });
   }
 
@@ -25,6 +36,9 @@ export class RecargaQrComponent {
 
 
   onSubmit() {
+    this.requestsService.getFundAll().subscribe((data: any) => {
+      console.log(data);
+    });
     if (this.formGroupRecarga.valid) {
       console.log('Recarga exitosa');
     } else {
