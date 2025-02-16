@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RequestsService } from '../services/requests.service';
-import { ResponseDto } from '../models/entities/response.dto';
-import { DoTopUpDto } from '../models/dtos/do-top-up.dto';
+import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
+import { ResponseDto } from '../../v1/models/entities/response.dto';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RequestsService } from '../../v1/services/requests.service';
+import { Router } from '@angular/router';
+import { DoTopUpDto } from '../../v1/models/dtos/do-top-up.dto';
 
 @Component({
-  selector: 'app-recarga-qr',
+  selector: 'app-consult-funds',
   standalone: false,
 
-  templateUrl: './recarga-qr.component.html',
-  styleUrl: './recarga-qr.component.css'
+  templateUrl: './consult-funds.component.html',
+  styleUrl: './consult-funds.component.css'
 })
-export class RecargaQrComponent implements OnInit{
-  isImageExpanded = false;
+export class ConsultFundsComponent {
+ isImageExpanded = false;
   amount: number = 0;
   formGroupRecarga: FormGroup;
   code: string | null= '';
@@ -44,7 +45,7 @@ scannerEnabled = false; // Controla si el escáner está habilitado o no
 
   // **********************
 
-  constructor(private formBuilder: FormBuilder, private requestsService: RequestsService) {
+  constructor(private formBuilder: FormBuilder, private requestsService: RequestsService, private router: Router) {
     this.formGroupRecarga = this.formBuilder.group({
       phoneControl: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]], // Validación de 10 dígitos
       codeControl: [this.code, [Validators.required, Validators.pattern(/^[a-zA-Z0-9!@#$%^&*()_+=-]*$/)]],
@@ -157,6 +158,7 @@ scannerEnabled = false; // Controla si el escáner está habilitado o no
 
 
   onSubmit() {
+    // this.router.navigate(['/qr-code'],{queryParams: {code: this.getcodeControlValue()}});
     if (this.formGroupRecarga.valid) {
       console.log('Recarga exitosa');
     } else {
@@ -204,5 +206,4 @@ scannerEnabled = false; // Controla si el escáner está habilitado o no
   expandImage() {
     this.isImageExpanded = !this.isImageExpanded;
   }
-
 }

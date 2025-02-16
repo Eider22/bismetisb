@@ -1,0 +1,38 @@
+<div class="super-container">
+  <div class="container">
+    <div class="svg-container">
+      <img class="" src="svgs/bitcoin-piggy-bank.svg" alt="piggy-bank" />
+    </div>
+
+    <form [formGroup]="formGroupRecarga" (ngSubmit)="onSubmit()">
+      <div class="form-section-one">
+        <label for="phone">Ingrese el Número de celular*</label>
+        <input
+          formControlName="phoneControl"
+          type="phone"
+          id="phone"
+          placeholder="Ej. 3141234567"
+          required
+          [readonly]="this.amount > 0"
+        />
+      </div>
+
+      <br />
+
+      <div class="form-section-two">
+        <button type="submit">
+          <!-- <button type="submit" [disabled]="formGroupRecarga.invalid"> -->
+          <span><i class="fa-brands fa-bitcoin"></i></span> Ver fondos
+        </button>
+      </div>
+    </form>
+
+    <br />
+    <!-- Mostrar errores -->
+    <div *ngIf="formGroupRecarga.get('phoneControl')?.errors?.['required']">
+      ⚠ El número de celular es obligatorio.
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

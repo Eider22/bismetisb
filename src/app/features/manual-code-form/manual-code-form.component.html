@@ -1,0 +1,66 @@
+<div class="super-container">
+  <div class="container-scanner">
+    <div *ngIf="!this.scannerEnabled" class="container">
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: baseline;
+          flex-direction: column;
+        "
+      >
+        <div>
+          <div class="svg-container" style="grid-row: 1; width: 20%">
+            <img class="" src="svgs/bitcoin-piggy-bank.svg" alt="" />
+          </div>
+        </div>
+
+      </div>
+
+      <form [formGroup]="formGroupRecarga" (ngSubmit)="onSubmit()">
+        <div *ngIf="this.amount == 0" class="form-section">
+          <label for="phone">Ingrese el código*</label>
+          <input
+            formControlName="codeControl"
+            type="text"
+            id="code"
+            placeholder="Ej. 0a4c282a-d91a-419a-b343-5e72d3e1b8a5--lot-2"
+            required
+            [readonly]="this.amount > 0"
+          />
+        </div>
+        <br />
+        <button type="submit">
+          <!-- <button type="submit" [disabled]="formGroupRecarga.invalid"> -->
+          <span><i class="fa-brands fa-bitcoin"></i></span> Siguiente
+        </button>
+        <br />
+      </form>
+
+      <br />
+      <!-- Mostrar errores -->
+      <div *ngIf="formGroupRecarga.get('phoneControl')?.errors?.['required']">
+        ⚠ El código es obligatorio.
+      </div>
+    </div>
+
+    <footer class="footer" [class.expanded]="isImageExpanded">
+      <div class="footer-content">
+        <img
+          src="https://thumbs.dreamstime.com/b/sonrisa-de-retrato-y-hombre-negocios-con-los-brazos-cruzados-en-el-trabajo-oficina-o-empresa-confianza-cara-feliz-enfrente-278069919.jpg"
+          alt="Foto del Representante"
+          class="footer-img"
+          [class.expanded]="isImageExpanded"
+          (click)="expandImage()"
+        />
+        <div class="footer-details">
+          <p class="footer-name">Nombre</p>
+          <p class="footer-role">Representante de Empresa</p>
+          <p class="footer-contact">
+            Tel: +57 300 123 4567 | Email: contacto&#64;empresa.com
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-/* General Styles */
+/* General Styles - Mobile First */
 body {
   margin: 0;
   padding: 0;
@@ -13,16 +13,16 @@ body {
 
 .container {
   background-color: #fff;
-  padding: 20px;
+  padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 400px;
+  max-width: 85%;
   margin: 10vh auto 0;
 }
 
 h1 {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #2c3e50;
   margin-bottom: 20px;
 }
@@ -47,7 +47,6 @@ label {
 input {
   padding: 10px;
   margin-bottom: 15px;
-  /* border: 1px solid #bdc3c7; */
   border: 1px solid #decead;
   border-radius: 5px;
   font-size: 1rem;
@@ -55,13 +54,11 @@ input {
 }
 
 input:focus {
-  /* border-color: #3498db; */
   border-color: #b3831d;
 }
 
 button {
   padding: 10px;
-  /* background-color: #3498db; */
   background-color: #b3831d;
   color: #fff;
   border: none;
@@ -71,12 +68,7 @@ button {
   transition: background-color 0.3s ease;
 }
 
-.bitcoin-icon {
-  color: #b3831d;
-}
-
 button:hover {
-  /* background-color: #2980b9; */
   background-color: #b78312;
 }
 
@@ -87,12 +79,14 @@ button:disabled {
   opacity: 0.6;
 }
 
-/* Footer Styles */
+.bitcoin-icon {
+  color: #b3831d;
+}
+
 .footer {
-  /* background-color: #2c3e50; */
   background-color: #b3831d;
   color: #ecf0f1;
-  padding: 20px;
+  padding: 15px;
   text-align: center;
   position: fixed;
   bottom: 0;
@@ -106,10 +100,9 @@ button:disabled {
 }
 
 .footer-img {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  /* border: 2px solid #3498db; */
   border: 2px solid #7e5b11;
   object-fit: cover;
   cursor: pointer;
@@ -125,6 +118,7 @@ button:disabled {
 .footer-details {
   margin-top: 10px;
   text-align: center;
+  font-size: 0.8rem;
 }
 
 .footer-name {
@@ -143,14 +137,14 @@ button:disabled {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 30vh; /* Asegura que quede a la mitad de la pantalla */
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+  height: 10vh;
+  max-width: 50%;
+  margin: auto;
+  animation: bounce 2s infinite;
 }
 
-svg {
-  max-width: 30%; /* Ajusta el tamaño del SVG */
+.svg-container img {
+  max-width: 30%;
   height: auto;
   margin-bottom: 0;
 }
@@ -167,52 +161,6 @@ svg {
   }
 }
 
-.svg-container {
-  animation: bounce 2s infinite;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .container {
-    padding: 15px;
-    max-width: 85%;
-  }
-
-  h1 {
-    font-size: 1.2rem;
-  }
-
-  .footer {
-    padding: 15px;
-  }
-
-  .footer-img {
-    width: 60px;
-    height: 60px;
-  }
-
-  .footer-details {
-    font-size: 0.8rem;
-  }
-
-  .svg-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 10vh; /* Asegura que quede a la mitad de la pantalla */
-    max-width: 50%;
-    margin: auto;
-  }
-
-  svg {
-    max-width: 100%; /* Ajusta el tamaño del SVG */
-    height: auto;
-  }
-
-}
-
-
-
 .camera-container {
   text-align: center;
   margin-top: 20px;
@@ -226,20 +174,6 @@ svg {
   margin-bottom: 10px;
 }
 
-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-
 .view-founds-btn {
   padding: 10px 20px;
   background-color: #b7861c;
@@ -247,7 +181,6 @@ button:hover {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-
 }
 
 .view-founds-btn:hover {
@@ -284,12 +217,45 @@ zxing-scanner {
   border-radius: 5px;
 }
 
-/* Reducimos el tamaño del scanner */
 .scanner {
   margin-top: 20px;
-  width: 300px; /* Ajusta el ancho según tu preferencia */
-  height: 200px; /* Ajusta la altura según tu preferencia */
+  width: 300px;
+  height: 200px;
   border: 2px solid #ddd;
   border-radius: 5px;
   display: inline-block;
+}
+
+/* Desktop Adjustments */
+@media (min-width: 768px) {
+  .container {
+    padding: 20px;
+    width: 400px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .footer {
+    padding: 20px;
+  }
+
+  .footer-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .footer-details {
+    font-size: 0.9rem;
+  }
+
+  .svg-container {
+    height: 30vh;
+    max-width: 90%;
+  }
+
+  svg {
+    max-width: 100%;
+  }
 }
